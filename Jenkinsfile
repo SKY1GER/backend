@@ -31,6 +31,7 @@ pipeline{
                 '''
             
         }
+        }
         stage("Build"){
             steps{
                 sh '''
@@ -41,7 +42,7 @@ pipeline{
             
         }
 
-        }
+    
     post{
         always{
             echo "this will run always"
@@ -57,3 +58,4 @@ pipeline{
     
 }
 }
+
