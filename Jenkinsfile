@@ -31,18 +31,13 @@ pipeline{
                 '''
             
         }
-        // stage("plan"){
-        //     when{
-        //         expression{
-        //             params.action == 'apply'
-        //         }
-        //     }
-        //     steps{
-        //         sh '''
-        //           cd 01-vpc
-        //           terraform plan
-        //         '''
-        //     }
+        stage("Build"){
+            steps{
+                sh '''
+                  zip -r backend-${appVersion} * -x Jenkinsfile -x backend-${appVersion}
+                  ls -ltr
+                '''
+            }
             
         }
 
