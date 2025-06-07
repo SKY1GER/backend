@@ -16,7 +16,6 @@ pipeline{
                    npm install
                    ls -ltr
                 '''
-            }
             
         }
         // stage("plan"){
@@ -48,4 +47,4 @@ pipeline{
         }
     }
     
-
+}
