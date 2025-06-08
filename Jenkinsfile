@@ -9,7 +9,7 @@ pipeline{
         ansiColor('xterm')
     }
     environment{
-        def appVersion = '' //variable declaration
+        def appVersion = "" //variable declaration
         nexusUrl = 'nexus.daws80s.online:8081'
         // region = "us-east-1"
         // account_id = "315069654700"
