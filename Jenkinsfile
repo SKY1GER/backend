@@ -10,7 +10,7 @@ pipeline{
     }
     environment{
         def appVersion = "" //variable declaration
-        nexusUrl = 'http://3.84.74.214:8081/repository/backend/'
+        nexusUrl = 'nexus.daws80s.online:8081'
         // region = "us-east-1"
         // account_id = "315069654700"
     }
