@@ -27,12 +27,13 @@ pipeline{
         }
         stage("install dependencies"){
             steps{
+                script{
                 sh  '''
                    npm install
                    ls -ltr
                    echo "application version : $appVersion"
                 '''
-            
+                }
         }
         }
         stage("Build"){
