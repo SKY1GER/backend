@@ -9,7 +9,10 @@ pipeline{
         ansiColor('xterm')
     }
     environment{
-        def appVersion = ''
+        def appVersion = '' //variable declaration
+        nexusUrl = 'nexus.daws80s.online:8081'
+        // region = "us-east-1"
+        // account_id = "315069654700"
     }
 
     stages{
@@ -40,6 +43,27 @@ pipeline{
                 '''
             }
             
+        }
+        stage('Nexus Artifact Upload'){
+            steps{
+                script{
+                    nexusArtifactUploader(
+                        nexusVersion: 'nexus3',
+                        protocol: 'http',
+                        nexusUrl: "${nexusUrl}",
+                        groupId: 'com.expense',
+                        version: "${appVersion}",
+                        repository: "backend",
+                        credentialsId: 'nexus-auth',
+                        artifacts: [
+                            [artifactId: "backend" ,
+                            classifier: '',
+                            file: "backend-" + "${appVersion}" + '.zip',
+                            type: 'zip']
+                        ]
+                    )
+                }
+            }
         }
 
     }
