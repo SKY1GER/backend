@@ -30,7 +30,7 @@ pipeline{
                 sh  '''
                    npm install
                    ls -ltr
-                   echo "application version : $appVersion"
+                   echo "application version : ${appVersion}"
                 '''
             
         }
@@ -38,7 +38,7 @@ pipeline{
         stage("Build"){
             steps{
                 sh '''
-                  zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+                  zip -q -r backend-1.0.0.zip * -x Jenkinsfile -x backend-1.0.0.zip
                   ls -ltr
                 '''
             }
