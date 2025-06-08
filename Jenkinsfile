@@ -27,20 +27,19 @@ pipeline{
         }
         stage("install dependencies"){
             steps{
-                script{
-                    sh  '''
+                sh """
                     npm install
                     ls -ltr
-                    echo "application version is $appVersion" '''
-               }
+                    echo "application version is $appVersion" 
+                """
            }
         }
         stage("Build"){
             steps{
-                sh '''
-                  zip -q -r backend-1.0.0.zip * -x Jenkinsfile -x backend-1.0.0.zip
+                sh """
+                  zip -q -r backend-$appVersion.zip * -x Jenkinsfile -x backend-$appVersion.zip
                   ls -ltr
-                '''
+                """
             }
             
         }
@@ -62,6 +61,16 @@ pipeline{
                             type: 'zip']
                         ]
                     )
+                }
+            }
+        }
+        stage('Deploy'){
+            steps{
+                script{
+                    def params = [
+                        string(name: 'appVersion', value: "${appVersion}")
+                    ]
+                    build job: 'backend-deploy', parameters: params, wait: false
                 }
             }
         }
