@@ -58,8 +58,8 @@ pipeline{
             steps{
             sh """
                 cd helm
-                sed -i "s/Image_Version/${appVersion}" values.yaml
-                helm install backend .
+                sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
+                helm upgrade backend .
             """
             }
         }
