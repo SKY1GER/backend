@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: backend
-        imagePullPolicy: always
+        imagePullPolicy: Always
         image: 196900110977.dkr.ecr.us-east-1.amazonaws.com/expense-backend:{{ .Values.deployment.imageVersion }}
         envFrom:
           - configMapRef:
