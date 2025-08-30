@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: expense
+  labels:
+    tier: backend
+    component: backend
+    project: expense
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      tier: backend
+      component: backend
+      project: expense 
+  template:
+    metadata:
+      labels:
+        tier: backend
+        component: backend
+        project: expense 
+    spec:
+      containers:
+      - name: backend
+        imagePullPolicy: always
+        image: expense-backend:latest 196900110977.dkr.ecr.us-east-1.amazonaws.com/expense-backend: {{ .Values.deployment.imageVersion }}
+        envFrom:
+          - configMapRef:
+              name: backend
