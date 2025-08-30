@@ -53,8 +53,8 @@ pipeline{
                 docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-backend:${appVersion}
             """
             }
-                stage("Deploy"){
-        steps{
+        stage("Deploy"){
+            steps{
             sh """
                 cd helm
                 sed -i "s/Image_Version/${appVersion}" values.yaml
