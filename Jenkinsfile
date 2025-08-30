@@ -53,7 +53,8 @@ pipeline{
                 docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-backend:${appVersion}
             """
             }
-        stage("Deploy"){
+        }
+        stage("helm install"){
             steps{
             sh """
                 cd helm
