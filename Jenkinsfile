@@ -44,6 +44,7 @@ pipeline{
                   ls -ltr
                 """
             }
+        }
         stage("Deploy"){
             steps{
             sh """
@@ -51,6 +52,7 @@ pipeline{
             """
             }
         }
+        
             
         // }
         // stage('Sonar Scan'){
